@@ -8,11 +8,11 @@ public class UndoController extends Controller {
         super(session);
     }
 
-    void undo() {
+    public void undo() {
         this.session.undo();
     }
 
-    boolean undoable() {
+    public boolean undoable() {
         return this.session.undoable();
     }
 }

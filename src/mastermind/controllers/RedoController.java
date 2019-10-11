@@ -8,11 +8,11 @@ public class RedoController extends Controller {
         super(session);
     }
 
-    void redo() {
+    public void redo() {
         this.session.redo();
     }
 
-    boolean redoable() {
+   public boolean redoable() {
         return this.session.redoable();
     }
 }

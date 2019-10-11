@@ -3,81 +3,36 @@ package mastermind.models;
 import java.util.List;
 
 import mastermind.types.Color;
-import mastermind.utils.Registry;
 
-public class Session {
-    private Game game;
+public interface Session {
 
-    private State state;
+    void resume();
 
-    private Registry registry;
+    void next();
 
-    public Session() {
-        this.game = new Game();
-        this.state = new State();
-        this.registry = new Registry(this.game);
-    }
+    StateValue getValueState();
 
-    public void resume() {
-        this.game.clear();
-        this.state.reset();
-        this.registry.reset();
-    }
+    public boolean undoable();
 
-    public void next() {
-        this.state.next();
-    }
+    public boolean redoable();
 
-    public StateValue getValueState() {
-        return this.state.getValueState();
-    }
+    public void undo();
 
-    public boolean undoable() {
-        return this.registry.undoable();
-    }
+    public void redo();
 
-    public boolean redoable() {
-        return this.registry.redoable();
-    }
+    public int getWidth();
 
-    public void undo() {
-        this.registry.undo(this.game);
-    }
+    public void addProposedCombination(List<Color> colors);
 
-    public void redo() {
-        this.registry.redo(this.game);
-    }
+    public boolean isLooser();
 
-    public int getWidth() {
-        return this.game.getWidth();
-    }
+    public boolean isWinner();
 
-    public void addProposedCombination(List<Color> colors) {
-        this.game.addProposedCombination(colors);
-        this.registry.registry();
-    }
+    public int getAttempts();
 
-    public boolean isLooser() {
-        return this.game.isLooser();
-    }
+    public List<Color> getColors(int position);
 
-    public boolean isWinner() {
-        return this.game.isWinner();
-    }
+    public int getBlacks(int position);
 
-    public int getAttempts() {
-        return this.game.getAttempts();
-    }
-
-    public List<Color> getColors(int position) {
-        return this.game.getColors(position);
-    }
-
-    public int getBlacks(int position) {
-        return this.game.getBlacks(position);
-    }
-
-    public int getWhites(int position) {
-        return this.game.getWhites(position);
-    }
+    public int getWhites(int position);
 }
