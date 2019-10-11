@@ -3,8 +3,8 @@ package mastermind.views;
 import mastermind.types.Color;
 
 public class ColorView {
-	
-	public static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
+
+	public static final char[] INITIALS = { 'r', 'b', 'y', 'g', 'o', 'p' };
 
 	protected Color color;
 
@@ -14,12 +14,12 @@ public class ColorView {
 
 	static String allInitials() {
 		String result = "";
-		for(char character: ColorView.INITIALS) {
+		for (char character : ColorView.INITIALS) {
 			result += character;
 		}
 		return result;
 	}
-	
+
 	public char getInitial() {
 		return ColorView.INITIALS[this.color.ordinal()];
 	}
@@ -32,5 +32,4 @@ public class ColorView {
 		}
 		return null;
 	}
-
 }

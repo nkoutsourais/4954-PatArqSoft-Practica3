@@ -11,5 +11,4 @@ public enum Color {
 	public static int length() {
 		return Color.values().length;
 	}
-	
 }

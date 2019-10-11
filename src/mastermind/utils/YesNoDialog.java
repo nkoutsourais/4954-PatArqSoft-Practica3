@@ -1,12 +1,12 @@
 package mastermind.utils;
 
-public class YesNoDialog  extends WithConsoleView {
+public class YesNoDialog extends WithConsoleView {
 
 	private static final char AFIRMATIVE = 'y';
 
 	private static final char NEGATIVE = 'n';
-	
-	private static final String QUESTION = "? ("+YesNoDialog.AFIRMATIVE+"/"+YesNoDialog.NEGATIVE+"): ";
+
+	private static final String QUESTION = "? (" + YesNoDialog.AFIRMATIVE + "/" + YesNoDialog.NEGATIVE + "): ";
 
 	private static final String MESSAGE = "The value must be '" + YesNoDialog.AFIRMATIVE + "' or '"
 			+ YesNoDialog.NEGATIVE + "'";
@@ -32,5 +32,4 @@ public class YesNoDialog  extends WithConsoleView {
 	private static boolean isNegative(char answer) {
 		return Character.toLowerCase(answer) == YesNoDialog.NEGATIVE;
 	}
-
 }

@@ -7,17 +7,17 @@ import mastermind.utils.Registry;
 
 public class Session {
     private Game game;
-	
+
     private State state;
-    
+
     private Registry registry;
 
-	public Session() {
-		this.game = new Game();
+    public Session() {
+        this.game = new Game();
         this.state = new State();
         this.registry = new Registry(this.game);
     }
-    
+
     public void resume() {
         this.game.clear();
         this.state.reset();
@@ -47,37 +47,37 @@ public class Session {
     public void redo() {
         this.registry.redo(this.game);
     }
-	
-	public int getWidth() {
-		return this.game.getWidth();
+
+    public int getWidth() {
+        return this.game.getWidth();
     }
 
     public void addProposedCombination(List<Color> colors) {
         this.game.addProposedCombination(colors);
         this.registry.registry();
-	}
+    }
 
-	public boolean isLooser() {
-		return this.game.isLooser();
-	}
-	
-	public boolean isWinner() {
-		return this.game.isWinner();
-	}
+    public boolean isLooser() {
+        return this.game.isLooser();
+    }
 
-	public int getAttempts() {
-		return this.game.getAttempts();
-	}
+    public boolean isWinner() {
+        return this.game.isWinner();
+    }
 
-	public List<Color> getColors(int position) {
-		return this.game.getColors(position);
-	}
+    public int getAttempts() {
+        return this.game.getAttempts();
+    }
 
-	public int getBlacks(int position) {
-		return this.game.getBlacks(position);
-	}
+    public List<Color> getColors(int position) {
+        return this.game.getColors(position);
+    }
 
-	public int getWhites(int position) {
-		return this.game.getWhites(position);
-	}
+    public int getBlacks(int position) {
+        return this.game.getBlacks(position);
+    }
+
+    public int getWhites(int position) {
+        return this.game.getWhites(position);
+    }
 }

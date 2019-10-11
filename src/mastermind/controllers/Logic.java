@@ -6,11 +6,11 @@ import mastermind.models.Session;
 import mastermind.models.StateValue;
 
 public class Logic {
-	
+
 	private Session session;
-	
+
 	private Map<StateValue, AcceptorController> controllers;
-		
+
 	public Logic() {
 		this.session = new Session();
 		this.controllers = new HashMap<StateValue, AcceptorController>();
@@ -19,7 +19,7 @@ public class Logic {
 		this.controllers.put(StateValue.FINAL, new ResumeController(this.session));
 		this.controllers.put(StateValue.EXIT, null);
 	}
-	
+
 	public AcceptorController getController() {
 		return this.controllers.get(this.session.getValueState());
 	}

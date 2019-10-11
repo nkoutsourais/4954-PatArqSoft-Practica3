@@ -39,9 +39,9 @@ public class Game implements Originator {
 	public boolean isLooser() {
 		return this.attempts == Game.MAX_LONG;
 	}
-	
+
 	public boolean isWinner() {
-		return this.results.get(this.attempts-1).isWinner();
+		return this.results.get(this.attempts - 1).isWinner();
 	}
 
 	public int getAttempts() {
@@ -65,8 +65,8 @@ public class Game implements Originator {
 	}
 
 	@Override
-    public GameMemento createMemento() {
-        GameMemento gameMemento = new GameMemento();
+	public GameMemento createMemento() {
+		GameMemento gameMemento = new GameMemento();
 		gameMemento.setAttempts(this.attempts);
 		gameMemento.setSecretCombination(this.secretCombination.copy());
 		for (ProposedCombination proposedCombination : this.proposedCombinations) {
@@ -75,18 +75,18 @@ public class Game implements Originator {
 		for (Result result : this.results) {
 			gameMemento.addResult(result.copy());
 		}
-        return gameMemento;
-    }
+		return gameMemento;
+	}
 
-    @Override
-    public void restore(Memento memento) {
+	@Override
+	public void restore(Memento memento) {
 		this.clear();
-        GameMemento gameMemento = (GameMemento) memento;
+		GameMemento gameMemento = (GameMemento) memento;
 		this.attempts = gameMemento.getAttempts();
 		this.secretCombination = gameMemento.getSecretCombination();
 		for (int i = 0; i < this.attempts; i++) {
 			this.proposedCombinations.add(gameMemento.getProposedCombination(i));
 			this.results.add(gameMemento.getResult(i));
 		}
-    }
+	}
 }

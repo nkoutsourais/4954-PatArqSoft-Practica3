@@ -19,5 +19,4 @@ public enum MessageView {
 	public String getMessage() {
 		return this.message;
 	}
-
 }

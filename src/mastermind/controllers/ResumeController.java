@@ -7,7 +7,7 @@ public class ResumeController extends AcceptorController {
 	public ResumeController(Session session) {
 		super(session);
 	}
-	
+
 	public void resume(boolean newGame) {
 		if (newGame) {
 			this.session.resume();

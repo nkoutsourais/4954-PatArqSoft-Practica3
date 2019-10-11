@@ -8,12 +8,12 @@ public class GameMemento extends Memento {
 
     private SecretCombination secretCombination;
 
-	private List<ProposedCombination> proposedCombinations;
+    private List<ProposedCombination> proposedCombinations;
 
-	private List<Result> results;
+    private List<Result> results;
 
     private int attempts;
-    
+
     public GameMemento() {
         this.results = new ArrayList<>();
         this.proposedCombinations = new ArrayList<>();

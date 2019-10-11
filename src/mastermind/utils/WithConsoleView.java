@@ -7,5 +7,4 @@ public abstract class WithConsoleView {
 	protected WithConsoleView() {
 		this.console = new Console();
 	}
-	
 }
