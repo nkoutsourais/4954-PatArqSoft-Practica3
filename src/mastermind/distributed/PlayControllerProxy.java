@@ -3,6 +3,7 @@ package mastermind.distributed;
 import java.util.List;
 
 import mastermind.controllers.PlayController;
+import mastermind.distributed.dispatchers.FrameType;
 import mastermind.distributed.dispatchers.TCPIP;
 import mastermind.models.Session;
 import mastermind.types.Color;
@@ -19,67 +20,69 @@ public class PlayControllerProxy extends PlayController {
 
     @Override
     public Error addProposedCombination(List<Color> colors) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+        this.tcpip.send(FrameType.PROPOSE.name());
+        this.tcpip.send(colors);
+		return this.tcpip.receiveError();
+	}
 
     @Override
-    public boolean isWinner() {
-        // TODO Auto-generated method stub
-        return false;
-    }
+	public boolean isWinner() {
+		this.tcpip.send(FrameType.IS_WINNER.name());
+        return this.tcpip.receiveBoolean();
+	}
 
     @Override
-    public boolean isLooser() {
-        // TODO Auto-generated method stub
-        return false;
-    }
+	public boolean isLooser() {
+		this.tcpip.send(FrameType.IS_LOOSER.name());
+        return this.tcpip.receiveBoolean();
+	}
 
     @Override
-    public int getAttempts() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	public int getAttempts() {
+		this.tcpip.send(FrameType.GET_ATTEMPTS.name());
+		return this.tcpip.receiveInt();
+	}
 
     @Override
-    public List<Color> getColors(int position) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	public List<Color> getColors(int position) {
+        this.tcpip.send(FrameType.GET_COLORS.name());
+        this.tcpip.send(position);
+		return this.tcpip.recieveColors();
+	}
 
     @Override
-    public int getBlacks(int position) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	public int getBlacks(int position) {
+		this.tcpip.send(FrameType.GET_BLAKS.name());
+        this.tcpip.send(position);
+		return this.tcpip.receiveInt();
+	}
 
     @Override
-    public int getWhites(int position) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	public int getWhites(int position) {
+        this.tcpip.send(FrameType.GET_WHITES.name());
+        this.tcpip.send(position);
+		return this.tcpip.receiveInt();
+	}
 
     @Override
     public void undo() {
-        // TODO Auto-generated method stub
-
+        this.tcpip.send(FrameType.UNDO.name());
     }
 
     @Override
     public void redo() {
-        // TODO Auto-generated method stub
-
+        this.tcpip.send(FrameType.REDO.name());
     }
 
     @Override
     public boolean undoable() {
-        // TODO Auto-generated method stub
-        return false;
+        this.tcpip.send(FrameType.UNDOABLE.name());
+        return this.tcpip.receiveBoolean();
     }
 
     @Override
     public boolean redoable() {
-        // TODO Auto-generated method stub
-        return false;
+        this.tcpip.send(FrameType.REDOABLE.name());
+        return this.tcpip.receiveBoolean();
     }
 }

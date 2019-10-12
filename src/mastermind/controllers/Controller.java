@@ -11,6 +11,6 @@ public abstract class Controller {
 	}
 
 	public int getWidth() {
-		return this.session.getWidth();
+		return session.getWidth();
 	}
 }

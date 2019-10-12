@@ -3,6 +3,10 @@ package mastermind.distributed.dispatchers;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+
+import mastermind.types.Color;
 import mastermind.types.Error;
 
 public class TCPIP extends mastermind.utils.TCPIP {
@@ -58,56 +62,34 @@ public class TCPIP extends mastermind.utils.TCPIP {
         return Error.valueOf(error);
     }
 
-    public void send(Suit suit) {
-        if (suit == null) {
+    public void send(List<Color> colors) {
+        if (colors == null) {
             this.send("null");
         } else {
-            this.send(suit.name());
+            String colorsSend = "";
+            for (Color color : colors) {
+                if(color == null)
+                    colorsSend += "#";
+                else
+                    colorsSend += color.ordinal();
+            }
+            this.send(colorsSend);
         }
     }
 
-    public Number receiveNumber() {
-        String number = this.receiveLine();
-        if (number.equals("null")) {
+    public List<Color> recieveColors() {
+        String error = this.receiveLine();
+        if (error.equals("null")) {
             return null;
         }
-        return Number.valueOf(number);
-    }
-
-    public void send(Number number) {
-        if (number == null) {
-            this.send("null");
-        } else {
-            this.send(number.name());
+        List<Color> colors = new ArrayList<>();
+        for (char ordinal : error.toCharArray()) {
+            if(ordinal == '#')
+                colors.add(null);
+            else
+                colors.add(Color.values()[Integer.parseInt(String.valueOf(ordinal))]);
         }
-    }
-
-    public Suit receiveSuit() {
-        String suit = this.receiveLine();
-        if (suit.equals("null")) {
-            return null;
-        }
-        return Suit.valueOf(suit);
-    }
-
-    public void send(Card card) {
-        if (card == null) {
-            this.send("null");
-        } else {
-            this.send(card.getSuit());
-            this.send(card.getNumber());
-            this.send(card.isFacedUp());
-        }
-    }
-
-    public Card receiveCard() {
-        Suit suit = this.receiveSuit();
-        if (suit == null) {
-            return null;
-        }
-        Number number = this.receiveNumber();
-        boolean facedUp = this.receiveBoolean();
-        return new Card(suit, number, facedUp);
+        return colors;
     }
 
     @Override
