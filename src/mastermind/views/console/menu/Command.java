@@ -1,13 +1,13 @@
 package mastermind.views.console.menu;
 
-import mastermind.controllers.PlayController;
+import mastermind.controllers.AcceptorController;
 
 public abstract class Command extends mastermind.utils.Command {
 
-    protected PlayController playController;
+    protected AcceptorController controller;
 
-    protected Command(String title, PlayController playController) {
+    protected Command(String title, AcceptorController controller) {
         super(title);
-        this.playController = playController;
+        this.controller = controller;
     }
 }

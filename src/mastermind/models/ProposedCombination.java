@@ -4,9 +4,9 @@ import java.util.List;
 
 import mastermind.types.Color;
 
-class ProposedCombination extends Combination {
+public class ProposedCombination extends Combination {
 
-	ProposedCombination(List<Color> colors) {
+	public ProposedCombination(List<Color> colors) {
 		this.colors = colors;
 	}
 

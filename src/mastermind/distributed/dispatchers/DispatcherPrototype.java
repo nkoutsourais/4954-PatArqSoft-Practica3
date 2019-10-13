@@ -35,5 +35,4 @@ public class DispatcherPrototype {
         } while (frameType != FrameType.CLOSE);
         this.tcpip.close();
     }
-
 }

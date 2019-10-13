@@ -5,6 +5,7 @@ import mastermind.types.Error;
 import mastermind.controllers.*;
 import mastermind.models.Session;
 import mastermind.types.Color;
+import mastermind.models.SessionImplementation;
 
 public class PlayControllerImplementation extends PlayController {
 
@@ -63,5 +64,9 @@ public class PlayControllerImplementation extends PlayController {
 
 	public boolean redoable() {
 		return this.redoController.redoable();
+	}
+
+	public void next() {
+		((SessionImplementation)this.session).next();
 	}
 }

@@ -5,9 +5,9 @@ import java.util.Random;
 
 import mastermind.types.Color;
 
-class SecretCombination extends Combination {
+public class SecretCombination extends Combination {
 
-	SecretCombination() {
+	public SecretCombination() {
 		for (Color color : Color.values()) {
 			this.colors.add(color);
 		}
@@ -36,8 +36,7 @@ class SecretCombination extends Combination {
 
 	SecretCombination copy() {
 		SecretCombination secretCombination = new SecretCombination();
-		secretCombination.colors.clear();
-		secretCombination.colors.addAll(this.colors);
+		secretCombination.setColors(this.colors);
 		return secretCombination;
 	}
 }

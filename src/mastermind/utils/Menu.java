@@ -1,4 +1,4 @@
-package mastermind.views.console.menu;
+package mastermind.utils;
 
 import java.util.ArrayList;
 

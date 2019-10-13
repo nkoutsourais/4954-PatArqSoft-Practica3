@@ -1,12 +1,12 @@
 package mastermind.models;
 
-class Result {
+public class Result {
 
 	private int blacks = 0;
 
 	private int whites = 0;
 
-	Result(int blacks, int whites) {
+	public Result(int blacks, int whites) {
 		assert blacks >= 0;
 		assert whites >= 0;
 		this.blacks = blacks;
@@ -17,11 +17,11 @@ class Result {
 		return this.blacks == Combination.getWidth();
 	}
 
-	int getBlacks() {
+	public int getBlacks() {
 		return this.blacks;
 	}
 
-	int getWhites() {
+	public int getWhites() {
 		return this.whites;
 	}
 

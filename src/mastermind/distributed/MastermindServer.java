@@ -1,6 +1,7 @@
 package mastermind.distributed;
 
 import mastermind.distributed.dispatchers.DispatcherPrototype;
+import mastermind.models.dao.DaoType;
 
 public class MastermindServer {
 
@@ -10,7 +11,7 @@ public class MastermindServer {
 
     private MastermindServer() {
         this.dispatcherPrototype = new DispatcherPrototype();
-        this.logicServer = new LogicImplementationServer();
+        this.logicServer = new LogicImplementationServer(DaoType.FILE);
         this.logicServer.createDispatchers(this.dispatcherPrototype);
     }
 

@@ -18,4 +18,17 @@ public abstract class Combination {
 	public static int getWidth() {
 		return Combination.WIDTH;
 	}
+
+	@Override
+	public String toString() {
+		return colors.toString();
+	}
+
+	public List<Color> getColors() {
+		return this.colors;
+	}
+
+	public void setColors(List<Color> colors) {
+		this.colors = colors;
+	}
 }

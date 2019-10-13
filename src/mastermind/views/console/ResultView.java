@@ -17,5 +17,4 @@ public class ResultView extends WithConsoleView {
 				.replaceFirst("#blacks", "" + this.playController.getBlacks(i))
 				.replaceFirst("#whites", "" + this.playController.getWhites(i)));
 	}
-
 }

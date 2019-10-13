@@ -6,16 +6,23 @@ import mastermind.types.Color;
 import mastermind.utils.Registry;
 
 public class SessionImplementation implements Session {
+    
     private Game game;
 
     private State state;
 
     private Registry registry;
 
+    private String name;
+
     public SessionImplementation() {
         this.game = new Game();
         this.state = new State();
         this.registry = new Registry(this.game);
+    }
+
+    public Game getGame() {
+        return this.game;
     }
 
     public void resume() {
@@ -30,6 +37,18 @@ public class SessionImplementation implements Session {
 
     public StateValue getValueState() {
         return this.state.getValueState();
+    }
+
+    public void setStateValue(StateValue stateValue) {
+        this.state.setValueState(stateValue);
+    }
+
+    public void resetRegistry() {
+        this.registry.reset();
+    }
+
+    public boolean hasName() {
+        return this.name != null;
     }
 
     public boolean undoable() {
@@ -57,6 +76,10 @@ public class SessionImplementation implements Session {
         this.registry.registry();
     }
 
+    public boolean isGameFinished() {
+        return isLooser() || isWinner();
+    }
+
     public boolean isLooser() {
         return this.game.isLooser();
     }
@@ -79,5 +102,13 @@ public class SessionImplementation implements Session {
 
     public int getWhites(int position) {
         return this.game.getWhites(position);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

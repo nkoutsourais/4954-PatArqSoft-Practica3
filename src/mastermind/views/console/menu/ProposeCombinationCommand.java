@@ -10,8 +10,8 @@ public class ProposeCombinationCommand extends Command {
     }
 
     @Override
-    public void execute() {
-        new ProposalView().interact(playController);
+    protected void execute() {
+        new ProposalView().interact(((PlayController)this.controller));
     }
 
     @Override

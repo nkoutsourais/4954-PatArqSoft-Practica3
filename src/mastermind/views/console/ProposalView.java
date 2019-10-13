@@ -21,8 +21,7 @@ public class ProposalView extends WithConsoleView {
 			}
 		} while (error != null);
 		this.console.writeln();
-		new AttemptsView(playController).writeln();
-		new SecretCombinationView(playController).writeln();
+		new SummaryView(playController).writeln();
 		for (int i = 0; i < playController.getAttempts(); i++) {
 			new ProposedCombinationView(playController).write(i);
 			new ResultView(playController).writeln(i);

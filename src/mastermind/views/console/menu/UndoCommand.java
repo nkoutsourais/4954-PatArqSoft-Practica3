@@ -9,12 +9,12 @@ public class UndoCommand extends Command {
     }
 
     @Override
-    public void execute() {
-        this.playController.undo();
+    protected void execute() {
+        ((PlayController)this.controller).undo();
     }
 
     @Override
     public boolean isActive() {
-        return this.playController.undoable();
+        return ((PlayController)this.controller).undoable();
     }
 }

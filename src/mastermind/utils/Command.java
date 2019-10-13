@@ -8,7 +8,7 @@ public abstract class Command {
         this.title = title;
     }
 
-    public abstract void execute();
+    protected abstract void execute();
 
     public String getTitle() {
         return this.title;

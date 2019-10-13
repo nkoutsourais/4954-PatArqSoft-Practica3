@@ -33,7 +33,7 @@ public class ProposalController extends Controller {
 		}
 		if (error == null) {
 			((SessionImplementation)this.session).addProposedCombination(colors);
-			if (((SessionImplementation)this.session).isWinner() || ((SessionImplementation)this.session).isLooser()) {
+			if (((SessionImplementation)this.session).isGameFinished()) {
 				((SessionImplementation)this.session).next();
 			}
 		}
