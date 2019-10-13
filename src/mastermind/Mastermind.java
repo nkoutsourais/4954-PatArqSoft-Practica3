@@ -7,21 +7,16 @@ import mastermind.views.console.ConsoleView;
 
 public abstract class Mastermind {
 
-	private Logic logic;
-
 	private View view;
 
 	protected Mastermind() {
-		this.logic = this.createLogic();
 		this.view = new ConsoleView();
 	}
 
-	protected abstract Logic createLogic();
-
-	protected void play() {
+	protected void play(Logic logic) {
 		AcceptorController controller;
 		do {
-			controller = this.logic.getController();
+			controller = logic.getController();
 			if (controller != null) {
 				this.view.interact(controller);
 			}

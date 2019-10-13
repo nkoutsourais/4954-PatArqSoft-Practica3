@@ -1,17 +1,14 @@
 package mastermind;
 
-import mastermind.controllers.Logic;
 import mastermind.controllers.implementation.LogicImplementation;
 import mastermind.models.dao.DaoType;
 
 public class MastermindStandalone extends Mastermind {
 
     public static void main(String[] args) {
-        new MastermindStandalone().play();
-    }
-
-    @Override
-    protected Logic createLogic() {
-        return new LogicImplementation(DaoType.FILE);
+        DaoType daoType = DaoType.FILE;
+        if(args.length > 0 && args[0] != null)
+            daoType = DaoType.parser(args[0]);
+        new MastermindStandalone().play(new LogicImplementation(daoType));
     }
 }
