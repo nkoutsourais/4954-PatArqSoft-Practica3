@@ -4,8 +4,8 @@ import mastermind.controllers.Logic;
 import mastermind.models.SessionImplementation;
 import mastermind.models.StateValue;
 import mastermind.models.dao.DaoType;
-import mastermind.models.dao.SessionImplementationDao;
-import mastermind.models.dao.SessionImplementationDaoPrototype;
+import mastermind.models.dao.SessionDao;
+import mastermind.models.dao.SessionDaoPrototype;
 
 public class LogicImplementation extends Logic {
 
@@ -19,8 +19,8 @@ public class LogicImplementation extends Logic {
 	
     public LogicImplementation(DaoType daoType) {
 		this.session = new SessionImplementation();
-		SessionImplementationDaoPrototype daoPrototype = new SessionImplementationDaoPrototype((SessionImplementation) this.session);
-		SessionImplementationDao sessionImplementationDao = daoPrototype.getSessionImplementationDao(daoType);
+		SessionDaoPrototype daoPrototype = new SessionDaoPrototype((SessionImplementation) this.session);
+		SessionDao sessionImplementationDao = daoPrototype.getSessionImplementationDao(daoType);
         this.startControllerImplementation = new StartControllerImplementation(this.session, sessionImplementationDao);
 		this.playControllerImplementation = new PlayControllerImplementation(this.session);
 		this.saveControllerImplementation = new SaveControllerImplementation(this.session, sessionImplementationDao);

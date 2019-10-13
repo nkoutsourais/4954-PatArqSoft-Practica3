@@ -1,6 +1,6 @@
 package mastermind.models.dao;
 
-public interface SessionImplementationDao {
+public interface SessionDao {
 
     void save();
 

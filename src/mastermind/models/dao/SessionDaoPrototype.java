@@ -6,21 +6,21 @@ import java.util.Map;
 import mastermind.models.SessionImplementation;
 import mastermind.models.dao.file.SessionImplementationFileDao;
 
-public class SessionImplementationDaoPrototype {
+public class SessionDaoPrototype {
 
-    private Map<DaoType, SessionImplementationDao> sessionDaoMap;
+    private Map<DaoType, SessionDao> sessionDaoMap;
 
-    public SessionImplementationDaoPrototype(SessionImplementation sessionImplementation) {
+    public SessionDaoPrototype(SessionImplementation sessionImplementation) {
         sessionDaoMap = new HashMap<>();
         this.add(DaoType.FILE, new SessionImplementationFileDao(sessionImplementation));
         //this.add(DaoType.DB, new SessionImplementationDbDao(sessionImplementation));
     }
 
-    private void add(DaoType daoType, SessionImplementationDao sessionDao) {
+    private void add(DaoType daoType, SessionDao sessionDao) {
         this.sessionDaoMap.put(daoType, sessionDao);
     }
 
-    public SessionImplementationDao getSessionImplementationDao(DaoType daoType) {
+    public SessionDao getSessionImplementationDao(DaoType daoType) {
         return this.sessionDaoMap.get(daoType);
     }
 }

@@ -2,11 +2,11 @@ package mastermind.models.dao.file;
 
 import mastermind.models.SessionImplementation;
 import mastermind.models.StateValue;
-import mastermind.models.dao.SessionImplementationDao;
+import mastermind.models.dao.SessionDao;
 
 import java.io.*;
 
-public class SessionImplementationFileDao implements SessionImplementationDao {
+public class SessionImplementationFileDao implements SessionDao {
 
     public static final String EXTENSION = ".mastermind";
 
