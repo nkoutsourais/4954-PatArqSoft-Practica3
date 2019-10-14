@@ -437,6 +437,28 @@ ControllersVisitor <|-down- View
 View ..> AcceptorController
 
 Mastermind *-down-> View
+Mastermind *-down-> Logic
+
+LogicImplementation --> SessionImplementation
+LogicImplementation --> SessionDao
+LogicImplementation --> DaoType
+LogicImplementation --> SessionDaoPrototype
+SaveControllerImplementation --> SessionDao
+StartControllerImplementation --> SessionDao
+Controller --> Session
+Logic --> Session
+LogicImplementationServer --> DaoType
+LogicImplementationServer ..> DispatcherPrototype
+LogicProxy *--> mastermind.dispatchers.TCPIP
+MastermindClient --> LogicProxy
+MastermindServer --> DispatcherPrototype
+MastermindServer --> LogicImplementationServer
+PlayControllerProxy *--> mastermind.dispatchers.TCPIP
+ResumeControllerProxy *--> mastermind.dispatchers.TCPIP
+SaveControllerProxy *--> mastermind.dispatchers.TCPIP
+StartControllerProxy *--> mastermind.dispatchers.TCPIP
+Dispatcher --> mastermind.dispatchers.TCPIP
+Dispatcher *--> AcceptorController
 
 @enduml
 
