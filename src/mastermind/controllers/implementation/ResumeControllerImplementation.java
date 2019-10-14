@@ -6,16 +6,16 @@ import mastermind.models.SessionImplementation;
 
 public class ResumeControllerImplementation extends ResumeController {
 
-    public ResumeControllerImplementation(Session session) {
+	public ResumeControllerImplementation(Session session) {
 		super(session);
 	}
 
-    @Override
+	@Override
 	public void resume(boolean newGame) {
 		if (newGame) {
-			((SessionImplementation)this.session).resume();
+			((SessionImplementation) this.session).resume();
 		} else {
-			((SessionImplementation)this.session).next();
+			((SessionImplementation) this.session).next();
 		}
 	}
 }

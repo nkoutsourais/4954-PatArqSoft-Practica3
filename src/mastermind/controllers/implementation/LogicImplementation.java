@@ -11,17 +11,17 @@ public class LogicImplementation extends Logic {
 
 	protected StartControllerImplementation startControllerImplementation;
 
-    protected PlayControllerImplementation playControllerImplementation;
+	protected PlayControllerImplementation playControllerImplementation;
 
 	protected ResumeControllerImplementation resumeControllerImplementation;
 
 	protected SaveControllerImplementation saveControllerImplementation;
-	
-    public LogicImplementation(DaoType daoType) {
+
+	public LogicImplementation(DaoType daoType) {
 		this.session = new SessionImplementation();
 		SessionDaoPrototype daoPrototype = new SessionDaoPrototype((SessionImplementation) this.session);
 		SessionDao sessionImplementationDao = daoPrototype.getSessionImplementationDao(daoType);
-        this.startControllerImplementation = new StartControllerImplementation(this.session, sessionImplementationDao);
+		this.startControllerImplementation = new StartControllerImplementation(this.session, sessionImplementationDao);
 		this.playControllerImplementation = new PlayControllerImplementation(this.session);
 		this.saveControllerImplementation = new SaveControllerImplementation(this.session, sessionImplementationDao);
 		this.resumeControllerImplementation = new ResumeControllerImplementation(this.session);
