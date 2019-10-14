@@ -9,13 +9,13 @@ import mastermind.models.SessionImplementation;
 
 public class PlayControllerImplementation extends PlayController {
 
-    private ProposalController proposalController;
+	private ProposalController proposalController;
 
-    private UndoController undoController;
+	private UndoController undoController;
 
-    private RedoController redoController;
+	private RedoController redoController;
 
-    public PlayControllerImplementation(Session session) {
+	public PlayControllerImplementation(Session session) {
 		super(session);
 		this.proposalController = new ProposalController(this.session);
 		this.undoController = new UndoController(this.session);
@@ -67,6 +67,6 @@ public class PlayControllerImplementation extends PlayController {
 	}
 
 	public void next() {
-		((SessionImplementation)this.session).next();
+		((SessionImplementation) this.session).next();
 	}
 }
