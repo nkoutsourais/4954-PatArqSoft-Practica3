@@ -7,17 +7,19 @@ public class MastermindServer {
 
     private DispatcherPrototype dispatcherPrototype;
 
-    private MastermindServer(LogicImplementationServer logicServer) {
+    private LogicImplementationServer logicServer;
+
+    private MastermindServer(DaoType daoType) {
         this.dispatcherPrototype = new DispatcherPrototype();
-        logicServer.createDispatchers(this.dispatcherPrototype);
+        this.logicServer = new LogicImplementationServer(daoType);
+        this.logicServer.createDispatchers(this.dispatcherPrototype);
     }
 
     public static void main(String[] args) {
         DaoType daoType = DaoType.FILE;
         if(args.length > 0 && args[0] != null)
             daoType = DaoType.parser(args[0]);
-        LogicImplementationServer logicServer = new LogicImplementationServer(daoType);
-        new MastermindServer(logicServer).serve();
+        new MastermindServer(daoType).serve();
     }
 
     private void serve() {
