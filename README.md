@@ -15,7 +15,6 @@
  
  ```PlantUML
 @startuml
-@startuml
 
 package mastermind {
 abstract class Mastermind {
@@ -461,8 +460,5 @@ Dispatcher --> mastermind.dispatchers.TCPIP
 Dispatcher *--> AcceptorController
 
 @enduml
-
-@enduml
-
 
 ```
