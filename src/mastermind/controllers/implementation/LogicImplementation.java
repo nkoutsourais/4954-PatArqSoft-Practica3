@@ -9,6 +9,10 @@ import mastermind.models.dao.SessionDaoPrototype;
 
 public class LogicImplementation extends Logic {
 
+	private final DaoType daoType;
+
+	private SessionDao sessionDao;
+
 	protected StartControllerImplementation startControllerImplementation;
 
 	protected PlayControllerImplementation playControllerImplementation;
@@ -18,17 +22,22 @@ public class LogicImplementation extends Logic {
 	protected SaveControllerImplementation saveControllerImplementation;
 
 	public LogicImplementation(DaoType daoType) {
+		this.daoType = daoType;
 		this.session = new SessionImplementation();
-		SessionDaoPrototype daoPrototype = new SessionDaoPrototype((SessionImplementation) this.session);
-		SessionDao sessionImplementationDao = daoPrototype.getSessionImplementationDao(daoType);
-		this.startControllerImplementation = new StartControllerImplementation(this.session, sessionImplementationDao);
+		this.sessionDao = createSessionDao();
+		this.startControllerImplementation = new StartControllerImplementation(this.session, this.sessionDao);
 		this.playControllerImplementation = new PlayControllerImplementation(this.session);
-		this.saveControllerImplementation = new SaveControllerImplementation(this.session, sessionImplementationDao);
+		this.saveControllerImplementation = new SaveControllerImplementation(this.session, this.sessionDao);
 		this.resumeControllerImplementation = new ResumeControllerImplementation(this.session);
 		this.controllers.put(StateValue.INITIAL, this.startControllerImplementation);
 		this.controllers.put(StateValue.IN_GAME, this.playControllerImplementation);
 		this.controllers.put(StateValue.FINAL, this.resumeControllerImplementation);
 		this.controllers.put(StateValue.SAVE, this.saveControllerImplementation);
 		this.controllers.put(StateValue.EXIT, null);
+	}
+
+	private SessionDao createSessionDao() {
+		SessionDaoPrototype daoPrototype = new SessionDaoPrototype((SessionImplementation) this.session);
+		return daoPrototype.getSessionImplementationDao(daoType);
 	}
 }
